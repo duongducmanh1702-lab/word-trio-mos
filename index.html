@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Word Trio</title>
@@ -8,70 +8,79 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+Sans:wght@400;500;700;800&display=swap">
 <style>
 :root{
-  --paper:#ECEEE9;
-  --sheet:#F7F8F4;
-  --ink:#232E2B;
-  --ink-2:#56625E;
-  --ink-3:#86908B;
-  --rule:#D3D8D0;
-  --rule-2:#C2C9BF;
-  --accent:#3B5878;
-  --accent-soft:#DFE5EC;
-  --on-accent:#F7F8F4;
-  --good:#3F7552;
-  --good-soft:#DCE9DE;
-  --bad:#A0503C;
-  --bad-soft:#F1DED7;
-  --marker:rgba(236,205,92,.55);
-  --tile:#FBFBF8;
-  --tile-edge:#C9CFC5;
-  --shadow:rgba(40,52,48,.10);
+  --paper:#F3F6FB;
+  --sheet:#FFFFFF;
+  --ink:#141C33;
+  --ink-2:#465170;
+  --ink-3:#7D88A3;
+  --rule:#DBE2EE;
+  --rule-2:#C5CFE0;
+  --accent:#2D5BE3;
+  --accent-soft:#E2E9FD;
+  --on-accent:#FFFFFF;
+  --good:#138A4E;
+  --good-soft:#D9F4E5;
+  --bad:#D93A42;
+  --bad-soft:#FDE2E3;
+  --marker:rgba(255,205,40,.78);
+  --tile:#FFFFFF;
+  --tile-edge:#C3CEE3;
+  --shadow:rgba(30,50,110,.14);
+  --lv-easy:#16A05A;
+  --lv-medium:#2D5BE3;
+  --lv-hard:#EC5B24;
   --serif:"Alegreya", "Iowan Old Style", Georgia, serif;
   --sans:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --paper:#191E1D;
-    --sheet:#202624;
-    --ink:#E2E6E0;
-    --ink-2:#A7B1AB;
-    --ink-3:#7A8580;
-    --rule:#313936;
-    --rule-2:#3D4643;
-    --accent:#9FB6D2;
-    --accent-soft:#2A3440;
-    --on-accent:#18201F;
-    --good:#8BC19A;
-    --good-soft:#233329;
-    --bad:#E09A85;
-    --bad-soft:#3A2722;
-    --marker:rgba(214,180,70,.30);
-    --tile:#262D2B;
-    --tile-edge:#3A4340;
-    --shadow:rgba(0,0,0,.35);
+    --paper:#0F1422;
+    --sheet:#182033;
+    --ink:#EEF2FB;
+    --ink-2:#B0BAD0;
+    --ink-3:#7A86A2;
+    --rule:#26304A;
+    --rule-2:#34405E;
+    --accent:#7F9CFF;
+    --accent-soft:#1E2A4D;
+    --on-accent:#0F1422;
+    --good:#43D68E;
+    --good-soft:#15352A;
+    --bad:#FF6F74;
+    --bad-soft:#3D1D24;
+    --marker:rgba(255,200,40,.42);
+    --tile:#1C2640;
+    --tile-edge:#34405E;
+    --shadow:rgba(0,0,0,.45);
+    --lv-easy:#43D68E;
+    --lv-medium:#7F9CFF;
+    --lv-hard:#FF9254;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --paper:#191E1D;
-  --sheet:#202624;
-  --ink:#E2E6E0;
-  --ink-2:#A7B1AB;
-  --ink-3:#7A8580;
-  --rule:#313936;
-  --rule-2:#3D4643;
-  --accent:#9FB6D2;
-  --accent-soft:#2A3440;
-  --on-accent:#18201F;
-  --good:#8BC19A;
-  --good-soft:#233329;
-  --bad:#E09A85;
-  --bad-soft:#3A2722;
-  --marker:rgba(214,180,70,.30);
-  --tile:#262D2B;
-  --tile-edge:#3A4340;
-  --shadow:rgba(0,0,0,.35);
+  --paper:#0F1422;
+  --sheet:#182033;
+  --ink:#EEF2FB;
+  --ink-2:#B0BAD0;
+  --ink-3:#7A86A2;
+  --rule:#26304A;
+  --rule-2:#34405E;
+  --accent:#7F9CFF;
+  --accent-soft:#1E2A4D;
+  --on-accent:#0F1422;
+  --good:#43D68E;
+  --good-soft:#15352A;
+  --bad:#FF6F74;
+  --bad-soft:#3D1D24;
+  --marker:rgba(255,200,40,.42);
+  --tile:#1C2640;
+  --tile-edge:#34405E;
+  --shadow:rgba(0,0,0,.45);
+  --lv-easy:#43D68E;
+  --lv-medium:#7F9CFF;
+  --lv-hard:#FF9254;
 }
 
 *{box-sizing:border-box}
@@ -96,8 +105,9 @@ button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);ou
 .mark{display:flex;align-items:baseline;gap:8px;background:none;border:0;padding:0;cursor:pointer}
 .mark-word{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:-.01em}
 .mark-dots{display:inline-flex;gap:3px;transform:translateY(-3px)}
-.mark-dots i{width:6px;height:6px;border-radius:50%;background:var(--ink-3)}
-.mark-dots i:nth-child(2){background:var(--accent)}
+.mark-dots i{width:7px;height:7px;border-radius:50%;background:var(--lv-easy)}
+.mark-dots i:nth-child(2){background:var(--lv-medium)}
+.mark-dots i:nth-child(3){background:var(--lv-hard)}
 .tools{display:flex;gap:4px;align-items:center}
 .tool{
   height:34px;min-width:34px;padding:0 9px;border-radius:8px;border:1px solid transparent;
@@ -110,7 +120,7 @@ button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);ou
 /* ---------- home ---------- */
 .intro{display:flex;flex-direction:column;gap:10px;padding-top:8px}
 .intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,6vw,46px);line-height:1.08;margin:0;letter-spacing:-.015em;text-wrap:balance}
-.intro h1 em{font-style:italic;color:var(--accent)}
+.intro h1 em{font-style:normal;padding:0 .08em;background:linear-gradient(transparent 56%, var(--marker) 56%, var(--marker) 92%, transparent 92%)}
 .intro p{margin:0;color:var(--ink-2);max-width:52ch}
 
 .sample{
@@ -128,23 +138,25 @@ button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);ou
   padding:18px 4px;border:0;border-bottom:1px solid var(--rule);background:none;text-align:left;cursor:pointer;width:100%
 }
 .levels .level:first-child{border-top:1px solid var(--rule)}
-.level:hover .level-name{color:var(--accent)}
+.level:hover .level-name{color:var(--lv)}
+.level:hover{background:linear-gradient(90deg, color-mix(in srgb, var(--lv) 8%, transparent), transparent 70%)}
 .level-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .level-name{font-family:var(--serif);font-size:26px;font-weight:500;line-height:1.1;transition:color .15s}
-.cefr{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
+.cefr{font-size:12.5px;font-weight:800;letter-spacing:.06em;color:var(--on-accent);background:var(--lv);padding:1px 8px;border-radius:999px;transform:translateY(-3px)}
 .level-desc{grid-column:1;color:var(--ink-2);font-size:15.5px}
 .level-count{grid-row:1 / span 2;grid-column:2;text-align:right;font-variant-numeric:tabular-nums;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .level-count b{font-size:20px;font-weight:700}
 .level-count span{color:var(--ink-3);font-size:14px}
-.meter{grid-column:1 / -1;height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
-.meter i{display:block;height:100%;background:var(--accent);border-radius:2px}
-.level-cta{font-size:14px;font-weight:700;color:var(--accent)}
+.meter{grid-column:1 / -1;height:5px;background:var(--rule);border-radius:2px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--lv);border-radius:2px;min-width:5px}
+.level-count .level-cta{font-size:14px;font-weight:800;color:var(--lv)}
 
 .notebook-row{
   display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
-  padding:16px 18px;border:1px dashed var(--rule-2);border-radius:10px;background:none;cursor:pointer;text-align:left
+  padding:16px 18px;border:1px solid var(--rule);border-radius:10px;background:var(--sheet);box-shadow:0 8px 20px -14px var(--shadow);cursor:pointer;text-align:left
 }
-.notebook-row:hover{background:var(--sheet)}
+.notebook-row:hover{border-color:var(--accent)}
+.notebook-row svg{color:var(--accent)}
 .notebook-row strong{font-family:var(--serif);font-size:20px;font-weight:500;display:block}
 .notebook-row span{color:var(--ink-2);font-size:15px}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:var(--ink-3);font-size:14.5px;border-top:1px solid var(--rule);padding-top:16px}
@@ -159,23 +171,23 @@ button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);ou
 .back svg{width:16px;height:16px}
 .qno{font-variant-numeric:tabular-nums;color:var(--ink-3);font-size:15px}
 .qno b{color:var(--ink);font-weight:700}
-.track{height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
-.track i{display:block;height:100%;background:var(--accent);transition:width .4s ease}
+.track{height:5px;background:var(--rule);border-radius:2px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--lv, var(--accent));transition:width .4s ease}
 
-.prompt{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0}
+.prompt{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--lv, var(--accent));margin:0}
 .contexts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .contexts li{
   display:grid;grid-template-columns:28px 1fr;gap:10px;padding-block:14px;border-bottom:1px solid var(--rule);
   font-family:var(--serif);font-size:clamp(19px,2.6vw,22px);line-height:1.5
 }
 .contexts li:first-child{border-top:1px solid var(--rule)}
-.contexts .n{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--ink-3);padding-top:7px;font-variant-numeric:tabular-nums}
+.contexts .n{font-family:var(--sans);font-size:13px;font-weight:800;color:var(--on-accent);background:var(--lv, var(--accent));width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:6px;font-variant-numeric:tabular-nums}
 .blank{
   display:inline-block;min-width:calc(var(--len) * .72em + .6em);padding:0 .15em;margin:0 .1em;
-  border:0;border-bottom:2px solid var(--ink-3);background:none;font:inherit;line-height:1.15;
+  border:0;border-bottom:2.5px solid var(--lv, var(--accent));background:none;font:inherit;line-height:1.15;
   text-align:center;letter-spacing:.06em;color:var(--ink-2);cursor:default;vertical-align:baseline
 }
-.blank.filled{color:var(--ink)}
+.blank.filled{color:var(--lv, var(--accent));font-weight:700}
 .blank.solved{
   border-bottom-color:transparent;color:var(--ink);cursor:pointer;letter-spacing:0;font-weight:500;min-width:0;padding:0 .12em;
   background:linear-gradient(transparent 50%, var(--marker) 50%, var(--marker) 94%, transparent 94%);
@@ -194,7 +206,7 @@ button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);ou
   display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;text-transform:uppercase;
   transition:border-color .15s, background .15s
 }
-.slot.next{border-color:var(--accent)}
+.slot.next{border-color:var(--lv, var(--accent));box-shadow:0 0 0 3px color-mix(in srgb, var(--lv, var(--accent)) 18%, transparent)}
 .slot.hint{color:var(--accent);background:var(--accent-soft);border-color:transparent}
 .slot.ok{background:var(--good-soft);border-color:var(--good);color:var(--good)}
 .slot.no{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
@@ -211,16 +223,16 @@ button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);ou
 .status{min-height:24px;text-align:center;font-size:16px;color:var(--ink-2);margin:0}
 .status.ok{color:var(--good);font-weight:700}
 .status.no{color:var(--bad);font-weight:700}
-.status.hint{color:var(--accent)}
+.status.hint{color:var(--accent);font-weight:700}
 
 .tiles{display:grid;grid-template-columns:repeat(8, 1fr);gap:8px;max-width:520px;margin:0 auto;width:100%}
 .tile{
   aspect-ratio:1/1.08;max-width:100%;border-radius:7px;border:1px solid var(--tile-edge);background:var(--tile);
-  box-shadow:0 2px 0 var(--tile-edge), 0 6px 12px -8px var(--shadow);
+  box-shadow:0 3px 0 var(--tile-edge), 0 8px 14px -8px var(--shadow);color:var(--ink);
   font-weight:800;font-size:clamp(18px,4.6vw,23px);cursor:pointer;transition:transform .08s, opacity .15s;
   display:flex;align-items:center;justify-content:center;user-select:none
 }
-.tile:hover:not(:disabled){transform:translateY(-1px)}
+.tile:hover:not(:disabled){transform:translateY(-1px);border-color:var(--lv, var(--accent));color:var(--lv, var(--accent))}
 .tile:active:not(:disabled){transform:translateY(2px);box-shadow:0 0 0 var(--tile-edge)}
 .tile:disabled{opacity:.18;cursor:default;box-shadow:none}
 .kbd-hint{text-align:center;color:var(--ink-3);font-size:14px;margin:-8px 0 0}
@@ -233,7 +245,7 @@ button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);ou
 }
 .btn:hover:not(:disabled){border-color:var(--ink-3)}
 .btn:disabled{opacity:.45;cursor:default}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);min-width:150px;justify-content:center}
+.btn.primary{background:var(--accent);border-color:var(--accent);box-shadow:0 8px 18px -10px var(--accent);color:var(--on-accent);min-width:150px;justify-content:center}
 .btn.primary:hover:not(:disabled){filter:brightness(1.07)}
 .btn.quiet{border-color:transparent;background:none;color:var(--ink-2)}
 .btn.quiet:hover:not(:disabled){color:var(--ink);border-color:transparent;text-decoration:underline;text-underline-offset:3px}
@@ -256,7 +268,7 @@ button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);ou
 .nb-item .round{grid-row:1 / span 3;grid-column:2;align-self:start}
 .empty{color:var(--ink-2);padding:28px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .empty strong{display:block;font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);margin-bottom:4px}
-.pos{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.pos{font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:1px 8px;border-radius:999px;align-self:flex-start}
 
 /* ---------- dialogs ---------- */
 .scrim{position:fixed;inset:0;background:rgba(20,26,25,.38);display:flex;align-items:flex-end;justify-content:center;z-index:20;padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px))}
@@ -464,7 +476,7 @@ function load(key, fallback){
 }
 function save(key, val){ try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){} }
 
-var prefs = load("wt2.prefs", { lang:"vi", sound:true, theme:null });
+var prefs = load("wt2.prefs", { lang:"en", sound:true, theme:null });
 var progress = load("wt2.progress", { easy:0, medium:0, hard:0 });
 var saved = load("wt2.saved", []);
 
@@ -607,6 +619,7 @@ function renderHome(){
     var L = LEVELS[k], total = L.q.length, done = Math.min(progress[k] || 0, total);
     var b = document.createElement("button");
     b.type = "button"; b.className = "level";
+    b.style.setProperty("--lv", "var(--lv-" + k + ")");
     var cta = done === 0 ? T("start") : (done >= total ? T("again") : T("cont"));
     b.innerHTML =
       '<span class="level-head"><span class="level-name">' + lvName(k) + '</span><span class="cefr">' + L.cefr + '</span></span>' +
@@ -625,6 +638,7 @@ var st = null;
 function startLevel(k, restart){
   if(restart || (progress[k] || 0) >= LEVELS[k].q.length){ progress[k] = 0; save("wt2.progress", progress); }
   st = { level:k, i:progress[k] || 0 };
+  document.body.style.setProperty("--lv", "var(--lv-" + k + ")");
   show("v-play");
   renderPuzzle();
 }
