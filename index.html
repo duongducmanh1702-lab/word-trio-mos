@@ -430,6 +430,28 @@ button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);ou
 @media (max-width:380px){
   .slot{height:42px;font-size:19px}
 }
+/* ---------- header on phones ---------- */
+.mark-word,.acct{white-space:nowrap}
+.bar{flex-wrap:nowrap}
+.tools{flex:none}
+@media (max-width:520px){
+  .bar{gap:8px}
+  .mark{gap:6px;min-width:0}
+  .mark-logo{transform:scale(.8);transform-origin:left center;margin-right:-9px}
+  .mark-word{font-size:23px}
+  .tools{gap:0}
+  .tool{min-width:32px;padding:0 6px}
+  .tool.acct{padding:0 10px 0 8px;gap:6px;font-size:14px;margin-right:2px}
+  .tool.acct.in{padding:0 3px}
+}
+@media (max-width:374px){
+  .mark-word{font-size:21px}
+  .tool{min-width:30px;padding:0 5px}
+}
+@media (max-width:349px){
+  .tool.acct:not(.in) .acct-label{display:none}
+  .tool.acct:not(.in){padding:0 8px}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}
 }
